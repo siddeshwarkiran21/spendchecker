@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+{% endblock %}
+
 {% block title %}Spendly — Track Every Rupee{% endblock %}
 
 {% block content %}
-
-<section class="hero">
-    <div class="hero-inner">
+<section class="hero-container">
+    <div class="hero-text">
         <div class="hero-badge">Personal Finance Tracker</div>
         <h1 class="hero-title">
             Know where your<br>
@@ -19,43 +22,69 @@
         <div class="hero-actions">
             <a href="{{ url_for('register') }}" class="btn-primary">Start tracking free</a>
             <a href="{{ url_for('login') }}" class="btn-ghost">Sign in</a>
+            <button id="open-modal" class="btn-how-it-works">See how it works</button>
         </div>
     </div>
+
     <div class="hero-visual">
-        <div class="mock-card">
-            <div class="mock-card-header">
-                <span class="mock-label">March 2026</span>
-                <span class="mock-total">₹12,450</span>
+        <div class="dashboard-card">
+            <div class="dashboard-header">
+                <span class="dashboard-month">MARCH 2026</span>
+                <div class="dashboard-dropdown">
+                    This Month ▾
+                </div>
             </div>
-            <div class="mock-bars">
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Bills</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar" style="width: 72%"></div>
-                    </div>
-                    <span class="mock-amt">₹4,500</span>
+
+            <div class="dashboard-summary">
+                <span class="summary-label">Total Spent</span>
+                <div class="summary-total">
+                    ₹12,450
+                    <span class="summary-trend">↓ 8.5% <small>vs Feb 2026</small></span>
                 </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Food</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-2" style="width: 52%"></div>
+            </div>
+
+            <div class="dashboard-list">
+                <div class="category-row">
+                    <div class="category-icon">📄</div>
+                    <span class="category-name">Bills</span>
+                    <div class="category-bar-track">
+                        <div class="category-bar-fill bar-bills" style="width: 45%"></div>
                     </div>
-                    <span class="mock-amt">₹3,200</span>
+                    <span class="category-percent">45%</span>
+                    <span class="category-amount">₹4,500</span>
                 </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Health</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-3" style="width: 33%"></div>
+                <div class="category-row">
+                    <div class="category-icon">🍕</div>
+                    <span class="category-name">Food</span>
+                    <div class="category-bar-track">
+                        <div class="category-bar-fill bar-food" style="width: 32%"></div>
                     </div>
-                    <span class="mock-amt">₹2,050</span>
+                    <span class="category-percent">32%</span>
+                    <span class="category-amount">₹3,200</span>
                 </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Transport</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-4" style="width: 28%"></div>
+                <div class="category-row">
+                    <div class="category-icon">💊</div>
+                    <span class="category-name">Health</span>
+                    <div class="category-bar-track">
+                        <div class="category-bar-fill bar-health" style="width: 20%"></div>
                     </div>
-                    <span class="mock-amt">₹1,800</span>
+                    <span class="category-percent">20%</span>
+                    <span class="category-amount">₹2,050</span>
                 </div>
+                <div class="category-row">
+                    <div class="category-icon">🚗</div>
+                    <span class="category-name">Transport</span>
+                    <div class="category-bar-track">
+                        <div class="category-bar-fill bar-transport" style="width: 15%"></div>
+                    </div>
+                    <span class="category-percent">15%</span>
+                    <span class="category-amount">₹1,800</span>
+                </div>
+            </div>
+
+            <div class="dashboard-footer">
+                <span>Great job! You spent 8.5% less than last month.</span>
+                <span>→</span>
             </div>
         </div>
     </div>
@@ -89,4 +118,52 @@
     </div>
 </section>
 
+<div id="how-it-works-modal" class="modal-backdrop">
+    <div class="modal-content">
+        <button id="close-modal" class="modal-close">&times;</button>
+        <h2 class="modal-title">How Spendly Works</h2>
+        <div class="modal-body">
+            <p>Spendly makes managing your finances effortless. Here is how you get started:</p>
+            <ul style="margin: 1rem 0; padding-left: 1.2rem; color: var(--ink-muted);">
+                <li style="margin-bottom: 0.5rem;"><strong>Quick Log:</strong> Add your expenses on the go with our intuitive input form.</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Smart Categorization:</strong> Organize spending into Bills, Food, Health, and more.</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Visual Insights:</strong> Watch your spending patterns emerge with automatic dashboards.</li>
+                <li><strong>Stay Disciplined:</strong> Set goals and track your progress month-over-month.</li>
+            </ul>
+            <p>Start today and take the first step towards financial freedom!</p>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const openBtn = document.getElementById('open-modal');
+        const closeBtn = document.getElementById('close-modal');
+        const modal = document.getElementById('how-it-works-modal');
+
+        if (openBtn && modal) {
+            openBtn.addEventListener('click', () => {
+                modal.classList.add('active');
+            });
+        }
+
+        if (closeBtn && modal) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+        }
+
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}
+
