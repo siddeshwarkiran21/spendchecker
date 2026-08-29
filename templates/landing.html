@@ -20,8 +20,12 @@
             one transaction at a time.
         </p>
         <div class="hero-actions">
-            <a href="{{ url_for('register') }}" class="btn-primary">Start tracking free</a>
-            <a href="{{ url_for('login') }}" class="btn-ghost">Sign in</a>
+            <a href="{{ url_for('register') }}" class="btn-primary">
+                <span class="btn-icon">📈</span> Start tracking free
+            </a>
+            <a href="{{ url_for('login') }}" class="btn-ghost">
+                <span class="btn-icon">↪️</span> Sign in
+            </a>
             <button id="open-modal" class="btn-how-it-works">See how it works</button>
         </div>
     </div>
@@ -31,7 +35,7 @@
             <div class="dashboard-header">
                 <span class="dashboard-month">MARCH 2026</span>
                 <div class="dashboard-dropdown">
-                    This Month ▾
+                    <span class="calendar-icon">📅</span> This Month ▾
                 </div>
             </div>
 
@@ -83,8 +87,8 @@
             </div>
 
             <div class="dashboard-footer">
-                <span>Great job! You spent 8.5% less than last month.</span>
-                <span>→</span>
+                <span class="footer-text">📈 Great job! You spent 8.5% less than last month.</span>
+                <span class="footer-arrow">❯</span>
             </div>
         </div>
     </div>
