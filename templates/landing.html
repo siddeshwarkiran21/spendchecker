@@ -105,16 +105,17 @@
 <div id="how-it-works-modal" class="modal-backdrop">
     <div class="modal-content">
         <button id="close-modal" class="modal-close">&times;</button>
-        <h2 class="modal-title">How Spendly Works</h2>
+        <h2 class="modal-title">See how it works</h2>
         <div class="modal-body">
-            <p>Spendly makes managing your finances effortless. Here is how you get started:</p>
-            <ul style="margin: 1rem 0; padding-left: 1.2rem; color: var(--ink-muted);">
-                <li style="margin-bottom: 0.5rem;"><strong>Quick Log:</strong> Add your expenses on the go with our intuitive input form.</li>
-                <li style="margin-bottom: 0.5rem;"><strong>Smart Categorization:</strong> Organize spending into Bills, Food, Health, and more.</li>
-                <li style="margin-bottom: 0.5rem;"><strong>Visual Insights:</strong> Watch your spending patterns emerge with automatic dashboards.</li>
-                <li><strong>Stay Disciplined:</strong> Set goals and track your progress month-over-month.</li>
-            </ul>
-            <p>Start today and take the first step towards financial freedom!</p>
+            <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+                <iframe id="modal-video"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                        src=""
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </div>
 </div>
@@ -127,23 +128,31 @@
         const openBtn = document.getElementById('open-modal');
         const closeBtn = document.getElementById('close-modal');
         const modal = document.getElementById('how-it-works-modal');
+        const video = document.getElementById('modal-video');
+        const videoSrc = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Placeholder URL
+
+        function openModal() {
+            video.src = videoSrc;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            video.src = ""; // Stop video playback by clearing the src
+        }
 
         if (openBtn && modal) {
-            openBtn.addEventListener('click', () => {
-                modal.classList.add('active');
-            });
+            openBtn.addEventListener('click', openModal);
         }
 
         if (closeBtn && modal) {
-            closeBtn.addEventListener('click', () => {
-                modal.classList.remove('active');
-            });
+            closeBtn.addEventListener('click', closeModal);
         }
 
         if (modal) {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
-                    modal.classList.remove('active');
+                    closeModal();
                 }
             });
         }

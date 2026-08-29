@@ -1,0 +1,22 @@
+## commands
+to run the claude, use the following commands: 
+ollama  launch clauude
+
+! use ! for git commits
+
+## slash commands
+/exit - Exit the application    
+/rename - Rename the current file
+/btw - used to ask questions inbetween ur current conversation which will not be saved in the conversation history
+/export file.md - Export the current conversation to a markdown file
+/logout - Logout of the application account
+/login - Login to the application account
+/model - Change the model used for the conversation
+/usage - Show the usage of the application
+/extra-usage - Show the extra usage of the application
+/stats - Show the statistics of the application
+/insights - Show the insights of the application
+/config - Show the configuration of the application
+/permissions - Show the permissions of the application
+/theme - Change the theme of the application
+/voice - Change the voice of the application - long press space button to start recording your voice and enter space button again to stop recording your voice
