@@ -9,86 +9,66 @@
 {% block content %}
 <section class="hero-container">
     <div class="hero-text">
-        <div class="hero-badge">Personal Finance Tracker</div>
+        <div class="hero-badge">Free to use &middot; No credit card needed</div>
         <h1 class="hero-title">
-            Know where your<br>
-            <em>money goes</em>
+            Track every rupee.<br>
+            <span class="highlight">Know where it goes.</span>
         </h1>
         <p class="hero-subtitle">
-            Log expenses, understand your spending patterns,
-            and take control of your financial life —
-            one transaction at a time.
+            Spendly helps you log expenses, spot patterns, and stay on budget — without the spreadsheet headache.
         </p>
         <div class="hero-actions">
-            <a href="{{ url_for('register') }}" class="btn-primary">
-                <span class="btn-icon">📈</span> Start tracking free
-            </a>
-            <a href="{{ url_for('login') }}" class="btn-ghost">
-                <span class="btn-icon">↪️</span> Sign in
-            </a>
-            <button id="open-modal" class="btn-how-it-works">See how it works</button>
+            <a href="{{ url_for('register') }}" class="btn-black">Create free account</a>
+            <button id="open-modal" class="btn-black">See how it works</button>
         </div>
     </div>
 
     <div class="hero-visual">
-        <div class="dashboard-card">
-            <div class="dashboard-header">
-                <span class="dashboard-month">MARCH 2026</span>
-                <div class="dashboard-dropdown">
-                    <span class="calendar-icon">📅</span> This Month ▾
+        <div class="window-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span></span><span></span><span></span>
                 </div>
             </div>
+            <div class="window-content">
+                <div class="summary-grid">
+                    <div class="summary-tile">
+                        <span class="tile-label">This month</span>
+                        <span class="tile-value">₹18,240</span>
+                        <span class="tile-trend positive">+12% vs last</span>
+                    </div>
+                    <div class="summary-tile">
+                        <span class="tile-label">Budget left</span>
+                        <span class="tile-value">₹6,760</span>
+                        <span class="tile-trend positive">43% remaining</span>
+                    </div>
+                    <div class="summary-tile">
+                        <span class="tile-label">Transactions</span>
+                        <span class="tile-value">34</span>
+                        <span class="tile-trend">this month</span>
+                    </div>
+                </div>
 
-            <div class="dashboard-summary">
-                <span class="summary-label">Total Spent</span>
-                <div class="summary-total">
-                    ₹12,450
-                    <span class="summary-trend">↓ 8.5% <small>vs Feb 2026</small></span>
-                </div>
-            </div>
-
-            <div class="dashboard-list">
-                <div class="category-row">
-                    <div class="category-icon">📄</div>
-                    <span class="category-name">Bills</span>
-                    <div class="category-bar-track">
-                        <div class="category-bar-fill bar-bills" style="width: 45%"></div>
+                <div class="spending-breakdown">
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Food</span>
+                        <div class="breakdown-bar-track">
+                            <div class="breakdown-bar-fill bar-food" style="width: 70%"></div>
+                        </div>
                     </div>
-                    <span class="category-percent">45%</span>
-                    <span class="category-amount">₹4,500</span>
-                </div>
-                <div class="category-row">
-                    <div class="category-icon">🍕</div>
-                    <span class="category-name">Food</span>
-                    <div class="category-bar-track">
-                        <div class="category-bar-fill bar-food" style="width: 32%"></div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Travel</span>
+                        <div class="breakdown-bar-track">
+                            <div class="breakdown-bar-fill bar-transport" style="width: 50%"></div>
+                        </div>
                     </div>
-                    <span class="category-percent">32%</span>
-                    <span class="category-amount">₹3,200</span>
-                </div>
-                <div class="category-row">
-                    <div class="category-icon">💊</div>
-                    <span class="category-name">Health</span>
-                    <div class="category-bar-track">
-                        <div class="category-bar-fill bar-health" style="width: 20%"></div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Bills</span>
+                        <div class="breakdown-bar-track">
+                            <div class="breakdown-bar-fill bar-bills" style="width: 35%"></div>
+                        </div>
                     </div>
-                    <span class="category-percent">20%</span>
-                    <span class="category-amount">₹2,050</span>
                 </div>
-                <div class="category-row">
-                    <div class="category-icon">🚗</div>
-                    <span class="category-name">Transport</span>
-                    <div class="category-bar-track">
-                        <div class="category-bar-fill bar-transport" style="width: 15%"></div>
-                    </div>
-                    <span class="category-percent">15%</span>
-                    <span class="category-amount">₹1,800</span>
-                </div>
-            </div>
-
-            <div class="dashboard-footer">
-                <span class="footer-text">📈 Great job! You spent 8.5% less than last month.</span>
-                <span class="footer-arrow">❯</span>
             </div>
         </div>
     </div>
